@@ -1,0 +1,102 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background: #222831;
+    text-align: center;
+    padding: 50px;
+    color: #EEEEEE;
+}
+
+/* Style the main container */
+.container {
+    background: #31363F;
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style form inputs */
+input, select {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #76ABAE;
+    box-sizing: border-box; /* Prevents width overflow */
+    border-radius: 5px;
+    background: #222831;
+    color: #EEEEEE;
+}
+
+/* Center the form elements */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+/* Remove number input arrows */
+input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+    appearance: textfield; /* Standard */
+}
+
+/* Remove up/down buttons in Webkit browsers (Chrome, Safari, Edge) */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* Style the button */
+button {
+    background: #76ABAE;
+    color: #222831;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #5c8c8f;
+}
+
+/* Style QR container */
+.qr-container {
+    margin-top: 20px;
+}
+
+.qr-container img {
+    width: 200px;
+    height: auto;
+    margin: 10px 0;
+}
+
+/* Style the download button */
+.qr-container button {
+    background: #76ABAE;
+    color: #222831;
+    margin-top: 10px;
+}
+
+.qr-container button:hover {
+    background: #5c8c8f;
+}
+
+@media (max-width: 480px) {
+    
+    .container {
+        width: 95%; /* Reduce width on very small screens */
+        padding: 15px;
+    }
+
+    input, select, button {
+        max-width: 100%; /* Make sure all elements fit within small screens */
+    }
+}

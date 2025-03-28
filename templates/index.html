@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>QR Code Generator</h2>
+        <form action="/" method="POST">
+            <div class="input-group">
+                <label for="data">Enter Text or URL:</label>
+                <input type="text" id="data" name="data" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="version">Version (1-40):</label>
+                <input type="number" id="version" name="version" min="1" max="40" value="3">
+            </div>
+            
+            <div class="input-group">
+                <label for="error_correction">Error Correction:</label>
+                <select id="error_correction" name="error_correction">
+                    <option value="L">Low (7%)</option>
+                    <option value="M">Medium (15%)</option>
+                    <option value="Q" selected>Quartile (25%)</option>
+                    <option value="H">High (30%)</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="box_size">Box Size:</label>
+                <input type="number" id="box_size" name="box_size" min="1" max="20" value="10">
+            </div>
+            
+            <div class="input-group">
+                <label for="border">Border Size:</label>
+                <input type="number" id="border" name="border" min="1" max="10" value="4">
+            </div>
+
+            <button type="submit">Generate QR Code</button>
+        </form>
+
+        <!-- Show QR Code when it's generated -->
+        {% if qr_code_base64 %}
+        <div class="qr-container">
+            <h3>Your QR Code:</h3>
+            <img id="qrImage" src="data:image/png;base64,{{ qr_code_base64 }}" alt="Generated QR Code">
+            <br>
+            <button onclick="downloadQR()">Download QR Code</button>
+        </div>
+
+        <script>
+            function downloadQR() {
+                const link = document.createElement("a");
+                link.href = document.getElementById("qrImage").src;
+                link.download = "qr_code.png";
+                link.click();
+            }
+        </script>
+        {% endif %}
+    </div>
+</body>
+</html>
